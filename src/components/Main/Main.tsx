@@ -1,11 +1,9 @@
 import React, { useCallback } from 'react';
 import { useEntities, useEntityFilter } from '../../states/entity';
 import { useNotify } from '../../states/notification';
-import { BreakPoint, Size, Space } from '../../styles/variables.css';
 import type { RegEntity, RegVariant } from '../../types/reg';
 import { Card } from '../Card';
 import { Container } from '../Container';
-import { VGrid } from '../VGrid';
 import * as styles from './Main.css';
 
 const titles: { [K in RegVariant]: string } = {
@@ -16,29 +14,6 @@ const titles: { [K in RegVariant]: string } = {
 };
 
 export type Props = {};
-
-const gridOptions = [
-  {
-    media: 'screen',
-    gap: Space * 5,
-    minContentLength: 270,
-  },
-  {
-    media: `screen and (min-width: ${BreakPoint.X_SMALL}px)`,
-    gap: Space * 5,
-    minContentLength: 300,
-  },
-  {
-    media: `screen and (min-width: ${BreakPoint.SMALL}px)`,
-    gap: Space * 5,
-    minContentLength: 360,
-  },
-  {
-    media: `screen and (min-width: ${BreakPoint.X_LARGE}px)`,
-    gap: Space * 5,
-    minContentLength: 540,
-  },
-];
 
 const Content = ({
   variant,
@@ -63,21 +38,18 @@ const Content = ({
       <h2 id={variant} className={styles.sectionTitle}>
         {title}
       </h2>
-      <VGrid
-        items={entities}
-        itemKey="id"
-        cellHeight={Size.CARD_OUTER_HEIGHT}
-        gridOptions={gridOptions}
-      >
-        {({ item: entity }) => (
-          <Card
-            href={`?id=${entity.id}`}
-            entity={entity}
-            menus={[]}
-            onCopy={handleCopy}
-          />
-        )}
-      </VGrid>
+      <ul className={styles.grid}>
+        {entities.map((entity) => (
+          <li key={entity.id}>
+            <Card
+              href={`?id=${entity.id}`}
+              entity={entity}
+              menus={[]}
+              onCopy={handleCopy}
+            />
+          </li>
+        ))}
+      </ul>
     </>
   );
 };

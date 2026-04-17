@@ -34,17 +34,13 @@ export const sign = style({
 
 export const image = style({
   position: 'relative',
-  overflow: 'hidden',
-  aspectRatio: '1',
   borderRadius: '6px 6px 0 0',
+  overflow: 'hidden',
 });
 
 export const imageInner = style({
-  position: 'absolute',
-  top: 0,
-  right: 0,
-  bottom: 0,
-  left: 0,
+  position: 'relative',
+  display: 'block',
   zIndex: 2,
 });
 

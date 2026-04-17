@@ -78,13 +78,7 @@ export const Card = ({ href, entity, menus, onCopy }: Props) => {
 
         <div className={styles.image}>
           <span className={styles.imageInner}>
-            <Image
-              lazy={true}
-              src={imageSrc(entity)}
-              width="100%"
-              height="100%"
-              fit="contain"
-            />
+            <Image lazy={true} src={imageSrc(entity)} width="100%" />
           </span>
           <Transparent />
         </div>
