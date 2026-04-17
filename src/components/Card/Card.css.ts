@@ -35,7 +35,7 @@ export const sign = style({
 export const image = style({
   position: 'relative',
   overflow: 'hidden',
-  height: '260px',
+  aspectRatio: '1',
   borderRadius: '6px 6px 0 0',
 });
 
